@@ -31,7 +31,7 @@
         let self = this
         this.$http({
           method: 'get',
-          url: 'http://192.168.5.22:9000/member/login',
+          url: 'http://localhost:9000/member/login',
           data: {
             username: this.uname,
             password: this.pwd
