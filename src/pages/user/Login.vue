@@ -6,13 +6,13 @@
       </div>
       <el-form>
         <el-form-item prop="username">
-          <el-input placeholder="用户名"><span>dsfsf</span></el-input>
+          <el-input placeholder="用户名" v-model="uname"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input type="password" placeholder="密码" ></el-input>
+          <el-input type="password" placeholder="密码" v-model="pwd"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" class="submit_btn">登陆</el-button>
+          <el-button type="primary" class="submit_btn" @click="login">登陆</el-button>
         </el-form-item>
       </el-form>
     </section>
@@ -20,9 +20,36 @@
 </template>
 <script>
   export default {
-
+    data() {
+      return {
+        uname:'',
+        pwd:''
+      }
+    },
+    methods: {
+      login () {
+        let self = this
+        this.$http({
+          method: 'get',
+          url: 'http://127.0.0.1:9000/member/login',
+          data: {
+            username: this.uname,
+            password: this.pwd
+          }
+        })
+          .then((r) => {
+            if(r.data == 'ok') {
+              self.$router.push({path:'/'})
+            } else {
+              self.$message.error('账号或密码错误，请重新填写');
+            }
+          })
+      }
+    }
   }
 </script>
 <style scoped>
   @import '../../assets/css/login.css';
 </style>
+
+
