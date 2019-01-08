@@ -35,7 +35,7 @@
           username: this.uname,
           password: this.pwd
         };
-        http.post('http://localhost:9000/member/login', params, (response) => {
+        http.post('http://112.253.11.114:9000/member/login', params, (response) => {
           if (response.data === 'ok') {
             self.$router.push({path: '/'})
           } else {
