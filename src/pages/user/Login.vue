@@ -19,31 +19,30 @@
   </div>
 </template>
 <script>
+  import http from '@/utils/http'
+
   export default {
     data() {
       return {
-        uname:'',
-        pwd:''
+        uname: '',
+        pwd: ''
       }
     },
     methods: {
-      login () {
-        let self = this
-        this.$http({
-          method: 'get',
-          url: 'http://localhost:9000/member/login',
-          data: {
-            username: this.uname,
-            password: this.pwd
+      login() {
+        let self = this;
+        let params = {
+          username: this.uname,
+          password: this.pwd
+        };
+        http.post('http://localhost:9000/member/login', params, (response) => {
+          if (response.data === 'ok') {
+            self.$router.push({path: '/'})
+          } else {
+            self.$message.error('账号或密码错误，请重新填写');
           }
         })
-          .then((r) => {
-            if(r.data == 'ok') {
-              self.$router.push({path:'/'})
-            } else {
-              self.$message.error('账号或密码错误，请重新填写');
-            }
-          })
+
       }
     }
   }
