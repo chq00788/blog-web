@@ -4,11 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Element from 'element-ui'
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
 import 'element-ui/lib/theme-chalk/index.css'
 import $ from 'jquery'
 
 Vue.use(Element)
-
+Vue.use(iView);
 Vue.config.productionTip = false
 
 
