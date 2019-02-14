@@ -29,7 +29,7 @@
           </el-col>
         </el-row>
         <br>
-        <el-button size="medium" type="primary" icon="el-icon-plus" >新增</el-button>
+        <el-button size="medium" type="primary" icon="el-icon-plus" @click="dialogFormVisible=true">新增</el-button>
         <el-button size="medium" icon="el-icon-upload2">导入</el-button>
         <el-button size="medium" icon="el-icon-download">导出</el-button>
         <el-table
@@ -49,6 +49,15 @@
             prop="address"
             label="地址">
           </el-table-column>
+          <el-table-column
+            label="操作"
+            width="180">
+            <template slot-scope="scope">
+              <el-button type="success" icon="el-icon-search" size="small"></el-button>
+              <el-button type="primary" icon="el-icon-edit" size="small"></el-button>
+              <el-button type="danger" icon="el-icon-delete" size="small"></el-button>
+            </template>
+          </el-table-column>
         </el-table>
         <el-pagination
           @size-change="handleSizeChange"
@@ -61,6 +70,25 @@
         </el-pagination>
       </div>
     </el-card>
+
+
+    <el-dialog title="新增" :visible.sync="dialogFormVisible" center width="30%">
+      <el-form :label-position="labelPosition" label-width="80px" :model="right">
+        <el-form-item label="用户名">
+          <el-input></el-input>
+        </el-form-item>
+        <el-form-item label="姓名">
+          <el-input></el-input>
+        </el-form-item>
+        <el-form-item label="密码">
+          <el-input></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <style>
@@ -76,6 +104,9 @@
         dateValue: '',
         state: null,
         currentPage: 1,
+        formLabelWidth: '120px',
+        dialogTableVisible: false,
+        dialogFormVisible: false,
         tableData: [{
           date: '2016-05-02',
           name: '王小虎',
