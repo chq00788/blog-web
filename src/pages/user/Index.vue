@@ -44,6 +44,12 @@
         </el-menu>
       </el-aside>
       <el-main style="background: #EAEAEA">
+        <el-breadcrumb separator="/" :style="{margin:'10px'}">
+          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+          <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+          <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+        </el-breadcrumb>
         <router-view/>
       </el-main>
     </el-container>
