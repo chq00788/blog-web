@@ -41,12 +41,12 @@
             <template slot-scope="scope">
               <el-switch
                 v-model="scope.row.status"
-                on-icon-class="bg-theme"
-                off-icon-class="btn-off-color"
-                on-text=""
-                off-text=""
-                on-value='1'
-                off-value='0'
+                active-icon-class="bg-theme"
+                inactive-icon-class="btn-off-color"
+                active-text=""
+                inactive-text=""
+                active-value='1'
+                inactive-value='0'
                 @change="changeStatus(scope.row.id,scope.row.status,scope.$index)">
               </el-switch>
             </template>
