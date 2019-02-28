@@ -33,25 +33,27 @@
         <el-button size="medium" icon="el-icon-upload2">导入</el-button>
         <el-button size="medium" icon="el-icon-download">导出</el-button>
         <el-table
-          :data="tableData" stripe="true"
-          style="width: 100%;margin: 5px">
-          <el-table-column
-            prop="date"
-            label="日期"
-            width="180">
+          :data="tableData" stripe border
+          style="width: 100%;margin: 10px 0 5px 0">
+          <el-table-column prop="date" label="日期" width="180"></el-table-column>
+          <el-table-column prop="name" label="姓名" width="180"></el-table-column>
+          <el-table-column property="status" label="状态" width="100">
+            <template slot-scope="scope">
+              <el-switch
+                v-model="scope.row.status"
+                on-icon-class="bg-theme"
+                off-icon-class="btn-off-color"
+                on-text=""
+                off-text=""
+                on-value='1'
+                off-value='0'
+                @change="changeStatus(scope.row.id,scope.row.status,scope.$index)">
+              </el-switch>
+            </template>
+
           </el-table-column>
-          <el-table-column
-            prop="name"
-            label="姓名"
-            width="180">
-          </el-table-column>
-          <el-table-column
-            prop="address"
-            label="地址">
-          </el-table-column>
-          <el-table-column
-            label="操作"
-            width="180">
+          <el-table-column prop="address" label="地址"></el-table-column>
+          <el-table-column label="操作" width="200">
             <template slot-scope="scope">
               <el-button type="success" icon="el-icon-search" size="small"></el-button>
               <el-button type="primary" icon="el-icon-edit" size="small"></el-button>
@@ -104,26 +106,32 @@
         dateValue: '',
         state: null,
         currentPage: 1,
+        labelPosition: "right",
         formLabelWidth: '120px',
         dialogTableVisible: false,
         dialogFormVisible: false,
         tableData: [{
           date: '2016-05-02',
           name: '王小虎',
+          status: '0',
           address: '上海市普陀区金沙江路 1518 弄'
         }, {
           date: '2016-05-04',
           name: '王小虎',
+          status: '1',
           address: '上海市普陀区金沙江路 1517 弄'
         }, {
           date: '2016-05-01',
           name: '王小虎',
+          status: '1',
           address: '上海市普陀区金沙江路 1519 弄'
         }, {
           date: '2016-05-03',
           name: '王小虎',
+          status: '0',
           address: '上海市普陀区金沙江路 1516 弄'
-        }]
+        }],
+        right: {}
       };
     },
     methods: {
@@ -132,6 +140,8 @@
       },
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
+      },
+      changeStatus(id, val, idx) {
       }
     }
   }

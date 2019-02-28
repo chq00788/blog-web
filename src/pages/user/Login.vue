@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-  import http from '@/utils/http'
+  import $http from '@/utils/http'
 
   export default {
     data() {
@@ -35,7 +35,7 @@
           username: this.uname,
           password: this.pwd
         };
-        http.post('http://112.253.11.114:9000/member/login', params, (response) => {
+        $http.post('http://112.253.11.114:9000/member/login', params, (response) => {
           if (response.data === 'ok') {
             self.$router.push({path: '/'})
           } else {

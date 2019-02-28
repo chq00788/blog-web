@@ -60,12 +60,15 @@
   export default {
     data() {
       return {
-        activeIndex: 1
+        activeIndex: "1"
       }
     },
     methods: {
       menuClick(router) {
         this.$router.push({path: router})
+      },
+      handleSelect(){
+
       }
     }
   }
