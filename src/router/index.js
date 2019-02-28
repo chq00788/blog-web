@@ -10,6 +10,7 @@ import Menu from '@/pages/user/Menu'
 Vue.use(Router)
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: '/login',

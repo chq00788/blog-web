@@ -3,7 +3,7 @@
     <el-header style="background: #141628;padding: 0">
       <el-row>
         <el-col :span="3" class="header_logo">
-          <div><h2 class="header_logo_font">XXX管理系统</h2></div>
+          <div><h2 class="header_logo_font">ADMIN 管理系统</h2></div>
         </el-col>
         <el-col :span="19">
           <el-menu
@@ -30,7 +30,7 @@
       </el-row>
     </el-header>
     <el-container style="height: 90%;">
-      <el-aside style="width: 250px">
+      <el-aside style="width: 240px">
         <el-menu :default-openeds="['1']">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-setting"></i>系统设置</template>
